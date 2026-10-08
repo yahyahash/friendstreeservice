@@ -8,6 +8,7 @@
 <meta property="og:title" content="Friends Tree Service LLC | Blytheville, AR">
 <meta property="og:description" content="Tree removal, trimming and stump grinding across Northeast Arkansas and the Missouri Bootheel. Open 24/7. Free estimates.">
 <meta property="og:image" content="https://fracktechnologies.com/wp-content/uploads/2026/10/WhatsApp-Image-2026-09-29-at-8.29.39-PM.jpeg">
+<link rel="preload" as="image" href="https://fracktechnologies.com/wp-content/uploads/2026/10/WhatsApp-Image-2026-09-29-at-8.29.39-PM.jpeg" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -120,18 +121,39 @@ header.nav.scrolled{box-shadow:0 1px 0 var(--line)}
 .menu-btn.active span:nth-child(2){opacity:0}
 .menu-btn.active span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
 
-/* hero */
-.hero{position:relative;margin:8px;border-radius:24px;overflow:hidden;min-height:calc(100svh - 110px);display:flex;align-items:flex-end;color:#fff;padding:0}
-.hero-bg{position:absolute;inset:0;background:url('https://fracktechnologies.com/wp-content/uploads/2026/10/WhatsApp-Image-2026-09-29-at-8.29.39-PM.jpeg') center/cover;transform:scale(1.08);animation:zoom 18s ease-out forwards}
-@keyframes zoom{to{transform:scale(1)}}
-.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,36,25,.25) 0%,rgba(14,36,25,.6) 40%,rgba(9,24,16,.96) 100%);z-index:1}
-.hero-content{position:relative;z-index:2;padding-top:120px;padding-bottom:32px}
+/* hero: mobile = slider on top, copy below */
+.hero{position:relative;margin:8px;border-radius:24px;overflow:hidden;background:var(--forest);color:#fff;padding:0;display:flex;flex-direction:column}
+.hero-slider{position:relative;width:100%;aspect-ratio:4/5;max-height:64svh;min-height:300px;background:var(--forest-2)}
+.hero-slider{overflow:hidden;touch-action:pan-y}
+.slides{display:flex;height:100%;transition:transform .8s var(--ease);will-change:transform}
+.slides.drag{transition:none}
+.slides:focus-visible{outline:2px solid var(--gold);outline-offset:-4px}
+.slide{flex:0 0 100%;height:100%;position:relative;overflow:hidden}
+.slide img{transform:scale(1.06);transition:transform 4s linear}
+.slide.on img{transform:scale(1)}
+.hs-bar{position:absolute;left:0;bottom:0;height:3px;width:100%;background:rgba(255,255,255,.12);z-index:4}
+.hs-bar i{display:block;height:100%;width:0;background:var(--gold)}
+.hs-bar i.run{width:100%;transition:width 3s linear}
+.slide img{width:100%;height:100%;object-fit:cover;-webkit-user-drag:none;user-select:none}
+.hero-slider::after{content:"";position:absolute;left:0;right:0;bottom:0;height:42%;background:linear-gradient(180deg,rgba(14,36,25,0),rgba(14,36,25,.85) 80%,var(--forest));pointer-events:none}
+.hs-ctrl{position:absolute;left:0;right:0;bottom:14px;z-index:3;display:flex;align-items:center;justify-content:space-between;gap:12px;padding-inline:var(--gutter)}
+.hs-count{font-family:'Fraunces';font-size:.9rem;color:rgba(255,255,255,.7);letter-spacing:.06em;min-width:56px}
+.hs-count b{color:#fff;font-weight:500}
+.hs-dots{display:flex;gap:6px;align-items:center}
+.hs-dots button{width:7px;height:7px;border-radius:999px;border:none;padding:0;background:rgba(255,255,255,.45);cursor:pointer;transition:width .4s var(--ease),background .4s}
+.hs-dots button.on{width:22px;background:var(--gold)}
+.hs-arrows{display:flex;gap:8px}
+.hs-btn{width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.35);background:rgba(14,36,25,.45);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#fff;display:grid;place-items:center;cursor:pointer;transition:background .3s,border-color .3s}
+.hs-btn svg{width:18px;height:18px}
+.hs-next svg{transform:rotate(180deg)}
+.hero-content{position:relative;z-index:2;padding-top:26px;padding-bottom:34px}
 .hero h1{font-size:clamp(2.35rem,10.5vw,6.4rem);margin:16px 0 18px}
 .hero p{font-size:1rem;color:rgba(255,255,255,.85);margin-bottom:28px;max-width:560px}
 .hero-actions{display:flex;flex-direction:column;gap:12px}
 .hero-actions .btn{width:100%}
 .hero-grid{display:grid;gap:40px;align-items:end}
 .hero-card{display:none}
+.hero .eyebrow{margin-top:0}
 .tick{width:22px;height:22px;border-radius:50%;background:var(--gold);color:var(--forest);display:grid;place-items:center;flex-shrink:0}
 .tick svg{width:12px;height:12px}
 
@@ -280,6 +302,7 @@ footer{padding:64px 0 calc(110px + env(safe-area-inset-bottom))}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
 .reveal.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){
+  .slides{transition:transform .4s ease!important}
   *,*::before,*::after{animation:none!important;transition:none!important}
   .reveal{opacity:1;transform:none}
 }
@@ -303,6 +326,7 @@ footer{padding:64px 0 calc(110px + env(safe-area-inset-bottom))}
   section{padding:100px 0}
   .hero,.services,.estimate{margin-inline:16px;border-radius:32px}
   .hero{margin-top:12px}
+  .hero-slider{aspect-ratio:16/10;max-height:60svh}
   .hero-content{padding-bottom:56px}
   .hero p{font-size:1.12rem}
   .bento{grid-template-columns:1fr 1fr;gap:16px}
@@ -351,7 +375,13 @@ footer{padding:64px 0 calc(110px + env(safe-area-inset-bottom))}
   .nav-cta .btn{display:inline-flex}
   .logo-mark{width:44px;height:44px}
   .logo-text{font-size:1.25rem}
-  .hero{margin-inline:20px;min-height:86vh}
+  .hero{margin-inline:20px;min-height:86vh;flex-direction:row;align-items:flex-end;background:var(--forest)}
+  .hero-slider{position:absolute;inset:0;aspect-ratio:auto;max-height:none;min-height:0}
+  .hero-slider::after{top:0;height:auto;background:linear-gradient(180deg,rgba(14,36,25,.3) 0%,rgba(14,36,25,.55) 45%,rgba(9,24,16,.95) 100%)}
+  .hs-ctrl{top:28px;bottom:auto;left:auto;right:28px;padding:8px 8px 8px 18px;border-radius:999px;background:rgba(14,36,25,.35);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.14)}
+  .hs-btn:hover{background:var(--gold);border-color:var(--gold);color:var(--forest)}
+  .hero-content{padding-top:140px;pointer-events:none}
+  .hero-content a,.hero-content .hero-card{pointer-events:auto}
   .hero-content{padding-bottom:72px}
   .hero-grid{grid-template-columns:1.5fr 1fr}
   .hero-card{display:block;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(18px);border-radius:24px;padding:28px}
@@ -452,7 +482,26 @@ footer{padding:64px 0 calc(110px + env(safe-area-inset-bottom))}
 
 <!-- HERO -->
 <section class="hero" id="hero">
-  <div class="hero-bg" role="img" aria-label="Friends Tree Service bucket truck and wood chipper on a job site"></div>
+  <div class="hero-slider" aria-roledescription="carousel" aria-label="Our work">
+    <div class="slides" id="slides" tabindex="0">
+      <div class="slide" role="group" aria-roledescription="slide" aria-label="1 of 7"><img src="https://fracktechnologies.com/wp-content/uploads/2026/10/WhatsApp-Image-2026-09-29-at-8.29.39-PM.jpeg" alt="Friends Tree Service crew on a tree removal job in Blytheville, Arkansas" fetchpriority="high"></div>
+      <div class="slide" role="group" aria-roledescription="slide" aria-label="2 of 7"><img src="https://fracktechnologies.com/wp-content/uploads/2026/10/WhatsApp-Image-2026-09-29-at-8.30.46-PM.jpeg" alt="Friends Tree Service working on a residential property" loading="lazy"></div>
+      <div class="slide" role="group" aria-roledescription="slide" aria-label="3 of 7"><img src="https://fracktechnologies.com/wp-content/uploads/2026/10/WhatsApp-Image-2026-09-29-at-8.38.41-PM.jpeg" alt="Tree work in Northeast Arkansas" loading="lazy"></div>
+      <div class="slide" role="group" aria-roledescription="slide" aria-label="4 of 7"><img src="https://fracktechnologies.com/wp-content/uploads/2026/10/WhatsApp-Image-2026-09-29-at-8.31.43-PM.jpeg" alt="Tree service equipment on a job site" loading="lazy"></div>
+      <div class="slide" role="group" aria-roledescription="slide" aria-label="5 of 7"><img src="https://fracktechnologies.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-22-at-11.44.03-PM.jpeg" alt="Bucket truck and wood chipper at a tree removal job" loading="lazy"></div>
+      <div class="slide" role="group" aria-roledescription="slide" aria-label="6 of 7"><img src="https://fracktechnologies.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-22-at-11.44.23-PM.jpeg" alt="Grapple truck loading tree debris" loading="lazy"></div>
+      <div class="slide" role="group" aria-roledescription="slide" aria-label="7 of 7"><img src="https://fracktechnologies.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-22-at-11.45.31-PM.jpeg" alt="Tree removal in Blytheville, AR" loading="lazy"></div>
+    </div>
+    <div class="hs-bar"><i id="hsBar"></i></div>
+    <div class="hs-ctrl">
+      <span class="hs-count"><b id="hsNow">01</b> / 07</span>
+      <div class="hs-dots" id="hsDots"></div>
+      <div class="hs-arrows">
+        <button class="hs-btn" id="hsPrev" aria-label="Previous photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <button class="hs-btn hs-next" id="hsNext" aria-label="Next photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
+      </div>
+    </div>
+  </div>
   <div class="wrap hero-content">
     <div class="hero-grid">
       <div>
@@ -741,6 +790,30 @@ footer{padding:64px 0 calc(110px + env(safe-area-inset-bottom))}
 
 <script>
 document.getElementById('yr').textContent=new Date().getFullYear();
+(()=>{const tr=document.getElementById('slides');if(!tr)return;
+const sl=[...tr.children],n=sl.length,dots=document.getElementById('hsDots'),now=document.getElementById('hsNow'),bar=document.getElementById('hsBar');
+const DELAY=3000;let idx=0,timer=null;
+sl.forEach((_,i)=>{const d=document.createElement('button');d.setAttribute('aria-label','Show photo '+(i+1));d.onclick=()=>{go(i);restart()};dots.appendChild(d)});
+function go(i){idx=(i+n)%n;tr.style.transform='translate3d('+(-idx*100)+'%,0,0)';
+  sl.forEach((s,k)=>{s.classList.toggle('on',k===idx);s.setAttribute('aria-hidden',k!==idx)});
+  [...dots.children].forEach((d,k)=>d.classList.toggle('on',k===idx));now.textContent=String(idx+1).padStart(2,'0');
+  const nx=sl[(idx+1)%n].querySelector('img');if(nx&&nx.loading==='lazy')nx.loading='eager';}
+function runBar(){bar.classList.remove('run');void bar.offsetWidth;bar.classList.add('run')}
+function restart(){clearTimeout(timer);runBar();timer=setTimeout(()=>{go(idx+1);restart()},DELAY)}
+function stop(){clearTimeout(timer);bar.classList.remove('run')}
+document.getElementById('hsPrev').onclick=()=>{go(idx-1);restart()};
+document.getElementById('hsNext').onclick=()=>{go(idx+1);restart()};
+/* swipe */
+let x0=null,y0=0,dx=0,horiz=null;const W=()=>tr.parentElement.clientWidth;
+tr.addEventListener('touchstart',e=>{x0=e.touches[0].clientX;y0=e.touches[0].clientY;dx=0;horiz=null;stop()},{passive:true});
+tr.addEventListener('touchmove',e=>{if(x0===null)return;const t=e.touches[0];dx=t.clientX-x0;
+  if(horiz===null)horiz=Math.abs(dx)>Math.abs(t.clientY-y0);
+  if(horiz){tr.classList.add('drag');tr.style.transform='translate3d(calc('+(-idx*100)+'% + '+dx+'px),0,0)'}},{passive:true});
+tr.addEventListener('touchend',()=>{tr.classList.remove('drag');if(horiz&&Math.abs(dx)>W()*.15)go(idx+(dx<0?1:-1));else go(idx);x0=null;restart()});
+tr.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){go(idx+1);restart()}if(e.key==='ArrowLeft'){go(idx-1);restart()}});
+document.addEventListener('visibilitychange',()=>document.hidden?stop():restart());
+go(0);restart();})();
+
 const nav=document.getElementById('nav');
 addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40));
 const links=document.getElementById('links'),mb=document.getElementById('menuBtn');
