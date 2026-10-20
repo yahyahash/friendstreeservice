@@ -423,6 +423,7 @@ footer{padding:64px 0 calc(110px + env(safe-area-inset-bottom))}
   .btn-dark:hover{background:var(--moss);transform:translateY(-2px)}
 }
 
+.btn-gold-line{border:1.5px solid var(--gold);color:var(--gold-2);background:rgba(201,164,92,.08)}
 .hero-alt{margin:16px 0 0!important;font-size:.92rem!important;color:rgba(255,255,255,.75)!important;text-align:center}
 .hero-alt a{color:var(--gold-2);font-weight:700;border-bottom:1px solid rgba(228,201,143,.5);padding-bottom:1px}
 .hero-alt span{color:rgba(255,255,255,.6)}
@@ -440,6 +441,7 @@ footer{padding:64px 0 calc(110px + env(safe-area-inset-bottom))}
 .callbar .cb-alt svg{width:15px;height:15px}
 @media(min-width:560px){.hero-alt{text-align:left}.area-calls{display:flex;flex-wrap:wrap}.area-calls .btn{width:auto}}
 @media(min-width:1100px){
+  .btn-gold-line:hover{background:var(--gold);color:var(--forest);transform:translateY(-2px)}
   .nav-phone{display:flex!important;flex-direction:column;align-items:flex-end;line-height:1.25;font-size:.9rem}
   .nav-phone a+a{font-size:.8rem;color:var(--muted);font-weight:600}
   .btn-outline:hover{background:var(--forest);color:#fff}
@@ -484,17 +486,16 @@ footer{padding:64px 0 calc(110px + env(safe-area-inset-bottom))}
 <section class="hero" id="hero">
   <div class="hero-slider" aria-roledescription="carousel" aria-label="Our work">
     <div class="slides" id="slides" tabindex="0">
-      <div class="slide" role="group" aria-roledescription="slide" aria-label="1 of 7"><img src="https://fracktechnologies.com/wp-content/uploads/2026/10/WhatsApp-Image-2026-09-29-at-8.29.39-PM.jpeg" alt="Friends Tree Service crew on a tree removal job in Blytheville, Arkansas" fetchpriority="high"></div>
-      <div class="slide" role="group" aria-roledescription="slide" aria-label="2 of 7"><img src="https://fracktechnologies.com/wp-content/uploads/2026/10/WhatsApp-Image-2026-09-29-at-8.30.46-PM.jpeg" alt="Friends Tree Service working on a residential property" loading="lazy"></div>
-      <div class="slide" role="group" aria-roledescription="slide" aria-label="3 of 7"><img src="https://fracktechnologies.com/wp-content/uploads/2026/10/WhatsApp-Image-2026-09-29-at-8.38.41-PM.jpeg" alt="Tree work in Northeast Arkansas" loading="lazy"></div>
-      <div class="slide" role="group" aria-roledescription="slide" aria-label="4 of 7"><img src="https://fracktechnologies.com/wp-content/uploads/2026/10/WhatsApp-Image-2026-09-29-at-8.31.43-PM.jpeg" alt="Tree service equipment on a job site" loading="lazy"></div>
-      <div class="slide" role="group" aria-roledescription="slide" aria-label="5 of 7"><img src="https://fracktechnologies.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-22-at-11.44.03-PM.jpeg" alt="Bucket truck and wood chipper at a tree removal job" loading="lazy"></div>
-      <div class="slide" role="group" aria-roledescription="slide" aria-label="6 of 7"><img src="https://fracktechnologies.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-22-at-11.44.23-PM.jpeg" alt="Grapple truck loading tree debris" loading="lazy"></div>
-      <div class="slide" role="group" aria-roledescription="slide" aria-label="7 of 7"><img src="https://fracktechnologies.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-22-at-11.45.31-PM.jpeg" alt="Tree removal in Blytheville, AR" loading="lazy"></div>
+      <div class="slide" role="group" aria-roledescription="slide" aria-label="1 of 6"><img src="https://fracktechnologies.com/wp-content/uploads/2026/10/WhatsApp-Image-2026-09-29-at-8.29.39-PM.jpeg" alt="Friends Tree Service crew on a tree removal job in Blytheville, Arkansas" fetchpriority="high"></div>
+      <div class="slide" role="group" aria-roledescription="slide" aria-label="2 of 6"><img src="https://fracktechnologies.com/wp-content/uploads/2026/10/WhatsApp-Image-2026-09-29-at-8.38.41-PM.jpeg" alt="Tree work in Northeast Arkansas" loading="lazy"></div>
+      <div class="slide" role="group" aria-roledescription="slide" aria-label="3 of 6"><img src="https://fracktechnologies.com/wp-content/uploads/2026/10/WhatsApp-Image-2026-09-29-at-8.31.43-PM.jpeg" alt="Tree service equipment on a job site" loading="lazy"></div>
+      <div class="slide" role="group" aria-roledescription="slide" aria-label="4 of 6"><img src="https://fracktechnologies.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-22-at-11.44.03-PM.jpeg" alt="Bucket truck and wood chipper at a tree removal job" loading="lazy"></div>
+      <div class="slide" role="group" aria-roledescription="slide" aria-label="5 of 6"><img src="https://fracktechnologies.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-22-at-11.44.23-PM.jpeg" alt="Grapple truck loading tree debris" loading="lazy"></div>
+      <div class="slide" role="group" aria-roledescription="slide" aria-label="6 of 6"><img src="https://fracktechnologies.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-22-at-11.45.31-PM.jpeg" alt="Tree removal in Blytheville, AR" loading="lazy"></div>
     </div>
     <div class="hs-bar"><i id="hsBar"></i></div>
     <div class="hs-ctrl">
-      <span class="hs-count"><b id="hsNow">01</b> / 07</span>
+      <span class="hs-count"><b id="hsNow">01</b> / 06</span>
       <div class="hs-dots" id="hsDots"></div>
       <div class="hs-arrows">
         <button class="hs-btn" id="hsPrev" aria-label="Previous photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
@@ -513,9 +514,12 @@ footer{padding:64px 0 calc(110px + env(safe-area-inset-bottom))}
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
             Call 870-838-9080
           </a>
+          <a href="tel:8708246555" class="btn btn-gold-line">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+            Call 870-824-6555
+          </a>
           <a href="#estimate" class="btn btn-ghost">Get a Free Estimate</a>
         </div>
-        <p class="hero-alt">Or call our second line <a href="tel:8708246555">870-824-6555</a></p>
       </div>
       <div class="hero-card">
         <h4>Why homeowners call us</h4>
